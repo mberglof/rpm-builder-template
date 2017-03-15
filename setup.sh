@@ -69,12 +69,14 @@ export IMGNAME=${PROJECT_NAME}
 
 echo "Creating docker_wrapper.sh for $IMGNAME"
 envsubst '$IMGNAME' < templates/docker_wrapper.sh > docker_wrapper.sh
+chmod 750 docker_wrapper.sh
 
 echo "Creating Makefile for $IMGNAME"
 envsubst '$IMGNAME' < templates/Makefile > Makefile
 
 echo "Creating build.sh for $IMGNAME"
 envsubst '$PROJECT_NAME:$PROJECT_DESC:$PROJECT_RPM_NAME:$PROJECT_VERSION' < templates/build.sh > scripts/build.sh
+chmod 750 scripts/build.sh
 
 echo Creating .envrc from ~/config/copr
 source env.sh > .envrc
