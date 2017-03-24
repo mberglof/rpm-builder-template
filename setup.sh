@@ -5,27 +5,19 @@ usage () {
     exit 1
 }
 
-#[ "$#" -lt 1 ] && usage 
-#DESC=Lua 5.3.x
-#RPMNAME=lua53
-
 while getopts "hn:d:v:r:" opt; do
   case $opt in
     n)
 	  PROJECT_NAME=$OPTARG
-      #echo "-a was triggered, Parameter: $OPTARG" >&2
       ;;
     d)
 	  PROJECT_DESC=$OPTARG
-      #echo "-a was triggered, Parameter: $OPTARG" >&2
       ;;
     v)
 	  PROJECT_VERSION=$OPTARG
-      #echo "-a was triggered, Parameter: $OPTARG" >&2
       ;;
     r)
 	  PROJECT_RPM_NAME=$OPTARG
-      #echo "-a was triggered, Parameter: $OPTARG" >&2
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
@@ -54,14 +46,15 @@ echo "Continue? (y/n)"
 read ANSWER
 
 case $ANSWER in
-    n|[n|N][O|o])
+    [n|N]|[n|N][O|o])
         exit 1
         ;;
-    y|[Y|y][E|e][s|S])
+    [y|Y]|[Y|y][E|e][s|S])
         echo ok
         ;;
     *)
         echo pfft
+	exit 2
         ;;
 esac
 
@@ -79,4 +72,4 @@ envsubst '$PROJECT_NAME:$PROJECT_DESC:$PROJECT_RPM_NAME:$PROJECT_VERSION' < temp
 chmod 750 scripts/build.sh
 
 echo Creating .envrc from ~/config/copr
-source env.sh > .envrc
+eval $(./env.sh | tee .envrc)
