@@ -1,5 +1,5 @@
 FROM centos:7
-MAINTAINER Hiroaki Nakamura <hnakamur@gmail.com>
+MAINTAINER Your Name <your.name@here.com?
 
 RUN yum -y install mock rpm-build rpmdevtools patch sudo curl less scl-utils scl-utils-build \
  && useradd -G mock builder \
