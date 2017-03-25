@@ -63,5 +63,9 @@ instead of running `source .envrc` yourself.
 3. Put the spec file in the `SPECS` directory
 4. Put the source files in the `SOURCES` directory
 
+## Kudos
+Hiroaki Nakamura
+
 ## License
 MIT
+
