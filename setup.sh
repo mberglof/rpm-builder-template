@@ -46,10 +46,10 @@ echo "Continue? (y/n)"
 read ANSWER
 
 case $ANSWER in
-    [n|N]|[n|N][O|o])
+    [nN]|[nN][Oo])
         exit 1
         ;;
-    [y|Y]|[Y|y][E|e][s|S])
+    [yY]|[Yy][Ee][sS])
         echo ok
         ;;
     *)
